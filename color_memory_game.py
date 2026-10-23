@@ -11,7 +11,11 @@ import threading
 
 COLORS = ["red", "green", "blue", "yellow"]
 
-sequence = []
+sequence = [] # contains numbers 0-3 that each denote a color in the sequence
+buttons_pressed = 0 # resets after every round
+alive = True # keeps track of whether user is still in the game
+finished_round = False # keeps track of whether a round has finished or not
+score = 0 # keeps track of the user's score (number of rounds won)
 
 guide = None # this will tell users what to do
 red = None
@@ -51,6 +55,7 @@ def setup_color_memory_game():
     game_thread = threading.Thread(target=run_game, daemon=True)
     game_thread.start()
 
+    disable_buttons()
     root.mainloop()
 
 # this function runs the actual game logic: showing the color sequences and waiting for user input
@@ -60,23 +65,37 @@ def run_game():
 
     while True:
         # Show sequence:
-        disable_buttons()
         guide.set("Remember the sequence!")
+        time.sleep(0.75)
         add_to_color_sequence()
         show_sequence()
         time.sleep(1)
 
         # Take and verify user input:
+        global buttons_pressed, finished_round, alive
+        finished_round = False
+        buttons_pressed = 0
         enable_buttons()
         guide.set("Now enter the sequence!")
-        time.sleep(2)
-        
-        # show sequence
-        # verify user input
+        # has to wait until all buttons have been pressed:
+        while alive:
+            time.sleep(0.1)
+            if finished_round:
+                break
+        finished_round = False
+        disable_buttons()
+
+        # If user still alive then increment their score
+        global score
+        if alive:
+            score = score + 1
+        else:
+            guide.set(f"Game Over! Score: {score}")
+            break
 
 def show_sequence():
     if len(sequence) == 0:
-        return # quit if sequence is empty
+        return # quit if sequence is empty (which shouldn't happen)
 
     for color in sequence:
         if color == 0:
@@ -90,16 +109,44 @@ def show_sequence():
         time.sleep(0.5) # 0.5 second delay between flashes
 
 def red_pressed():
-    pass
+    global buttons_pressed, finished_round
+    if sequence[buttons_pressed] == 0:
+        buttons_pressed = buttons_pressed + 1
+        if len(sequence) == buttons_pressed:
+            finished_round = True
+    else:
+        global alive
+        alive = False
 
 def green_pressed():
-    pass
+    global buttons_pressed, finished_round
+    if sequence[buttons_pressed] == 1:
+        buttons_pressed = buttons_pressed + 1
+        if len(sequence) == buttons_pressed:
+            finished_round = True
+    else:
+        global alive
+        alive = False
 
 def blue_pressed():
-    pass
+    global buttons_pressed, finished_round
+    if sequence[buttons_pressed] == 2:
+        buttons_pressed = buttons_pressed + 1
+        if len(sequence) == buttons_pressed:
+            finished_round = True
+    else:
+        global alive
+        alive = False
 
 def yellow_pressed():
-    pass
+    global buttons_pressed, finished_round
+    if sequence[buttons_pressed] == 3:
+        buttons_pressed = buttons_pressed + 1
+        if len(sequence) == buttons_pressed:
+            finished_round = True
+    else:
+        global alive
+        alive = False
 
 def flash_red():
     red.config(bg="white")
@@ -141,13 +188,13 @@ def add_to_color_sequence():
 def loading_animation():
     # Plays the loading animation, resting for 0.5 seconds between each update
     guide.set("Setting up game.")
-    time.sleep(0.25)
+    time.sleep(0.4)
     guide.set("Setting up game..")
-    time.sleep(0.25)
+    time.sleep(0.4)
     guide.set("Setting up game...")
-    time.sleep(0.25)
+    time.sleep(0.4)
     guide.set("Setting up game....")
-    time.sleep(0.25)
+    time.sleep(0.4)
     guide.set("READY?")
     time.sleep(1.5)
     guide.set("GO!")
