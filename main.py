@@ -37,7 +37,7 @@ def main():
     print("Welcome to TickTomato!")
 
     # creates a thread for the gui so it can run at the same time as the timer
-    gui_thread = threading.Thread(target=create_gui)
+    gui_thread = threading.Thread(target=create_gui, daemon=True)
 
     gui_thread.start() # start GUI
     time.sleep(1) # Give GUI a moment to set up
