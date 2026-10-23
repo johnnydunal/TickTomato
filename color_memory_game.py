@@ -1,12 +1,7 @@
 
 # A simple color memory game that users can play during their break
 
-'''
-TODO:
-- Make the guide label work correctly
-- Add the full game with actual sequence
-- Add Sounds
-'''
+# TODO: Add Sounds!!
 
 from operator import le
 import random
@@ -14,7 +9,7 @@ import time
 import tkinter as tk
 import threading
 
-COLORS = ["red", "green", "yellow", "blue"]
+COLORS = ["red", "green", "blue", "yellow"]
 
 sequence = []
 
@@ -34,13 +29,13 @@ def setup_color_memory_game():
     pixel_dir = tk.PhotoImage(width=1, height=1) # forces width and height to be set in pixels for the buttons later
 
     # configure the guide label
+    global guide
     guide = tk.StringVar()
-    guide.set("Setting up game...")
+    guide.set("Setting up game")
     guide_label = tk.Label(root, textvariable=guide, font=("Arial", 12, "bold"))
 
-    time.sleep(1)
-
     # configure the four 80x80 pixel gameplay buttons
+    global red, green, blue, yellow
     red = tk.Button(root, image=pixel_dir, compound="center", width=150, height=150, bg="red", fg="red", command=red_pressed)
     green = tk.Button(root, image=pixel_dir, compound="center", width=150, height=150, bg="green", fg="green", command=green_pressed)
     blue = tk.Button(root, image=pixel_dir, compound="center", width=150, height=150, bg="blue", fg="blue", command=blue_pressed)
@@ -58,28 +53,73 @@ def setup_color_memory_game():
 
     root.mainloop()
 
+# this function runs the actual game logic: showing the color sequences and waiting for user input
 def run_game():
-    # this runs the actual game, showing the color sequences and waiting for user input
-    pass
+
+    loading_animation()
+
+    while True:
+        # Show sequence:
+        disable_buttons()
+        guide.set("Remember the sequence!")
+        add_to_color_sequence()
+        show_sequence()
+        time.sleep(1)
+
+        # Take and verify user input:
+        enable_buttons()
+        guide.set("Now enter the sequence!")
+        time.sleep(2)
+        
+        # show sequence
+        # verify user input
 
 def show_sequence():
     if len(sequence) == 0:
-        return
+        return # quit if sequence is empty
 
     for color in sequence:
-        pass # TODO: Finish later
+        if color == 0:
+            flash_red()
+        elif color == 1:
+            flash_green()
+        elif color == 2:
+            flash_blue()
+        elif color == 3:
+            flash_yellow()
+        time.sleep(0.5) # 0.5 second delay between flashes
 
 def red_pressed():
-    guide.set("RED")
+    pass
 
 def green_pressed():
-    guide.set("GREEN")
+    pass
 
 def blue_pressed():
-    guide.set("BLUE")
+    pass
 
 def yellow_pressed():
-    guide.set("YELLOW")
+    pass
+
+def flash_red():
+    red.config(bg="white")
+    time.sleep(0.2)
+    red.config(bg="red")
+
+def flash_green():
+    green.config(bg="white")
+    time.sleep(0.2)
+    green.config(bg="green")
+
+def flash_blue():
+    blue.config(bg="white")
+    time.sleep(0.2)
+    blue.config(bg="blue")
+
+def flash_yellow():
+    yellow.config(bg="white")
+    time.sleep(0.2)
+    yellow.config(bg="yellow")
 
 def disable_buttons():
     red.config(state="disabled")
@@ -97,6 +137,21 @@ def enable_buttons():
 def add_to_color_sequence():
     global sequence
     sequence.append(random.randint(0, 3))
+
+def loading_animation():
+    # Plays the loading animation, resting for 0.5 seconds between each update
+    guide.set("Setting up game.")
+    time.sleep(0.25)
+    guide.set("Setting up game..")
+    time.sleep(0.25)
+    guide.set("Setting up game...")
+    time.sleep(0.25)
+    guide.set("Setting up game....")
+    time.sleep(0.25)
+    guide.set("READY?")
+    time.sleep(1.5)
+    guide.set("GO!")
+    time.sleep(1)
 
 
 setup_color_memory_game()
