@@ -227,9 +227,9 @@ def tictactoe_game(root):
         return False
 
     def stop_game(a, b, c):
-        buttons[a].config(bg="red")
-        buttons[b].config(bg="red")
-        buttons[c].config(bg="red")
+        buttons[a].config(bg="green")
+        buttons[b].config(bg="green")
+        buttons[c].config(bg="green")
         for button in buttons:
                     button.config(state="disabled")
         back_to_menu()
