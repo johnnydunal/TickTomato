@@ -14,16 +14,17 @@ import tkinter
 import threading
 from enum import Enum
 
-''' Import the break games
+# Import the break games
 from color_memory_game import setup_color_memory_game
 from tic_tac_toe import game_window
-'''
+
 
 # Define lengths of work/break (in seconds!)
 WORK_LENGTH = 25 * 60
 BREAK_LENGTH = 5 * 60
 
 LENGTH_OF_SECOND = 1 # should be 1 unless trying to test code by "making time pass faster"
+DEBUG = False # Set to true if debugging, will show debug print statements that explain what's happening
 
 # the global reference for the main GUI window
 root_window = None
@@ -42,6 +43,10 @@ time_label_var = None
 
 # Starts the program
 def main():
+
+    # Prints debug statements
+    debug("Starting main function...")
+
     # creates a thread for the timer so it can run at the same time as the gui
     work_thread = threading.Thread(target=start_timer_logic, daemon=True)
 
@@ -49,18 +54,19 @@ def main():
     create_gui() # start timer
 
 def start_timer_logic():
-    time.sleep(1) # Give GUI a moment to set up
+    time.sleep(0.5) # Give GUI a moment to set up
+    debug("Starting timer logic...")
     work_timer()
 
 # Manages the WORK timer
 def work_timer():
-    print("Starting work timer...")
+    debug("Starting work timer...")
     start_timer(WORK_LENGTH) # begins the 25-minute work timer
     break_timer() # switch to break timer
 
 # Manages the BREAK timer
 def break_timer():
-    print("Starting break timer...")
+    debug("Starting break timer...")
     start_timer(BREAK_LENGTH) # begins the 5-minute break timer
     work_timer() # switch to work timer
 
@@ -69,9 +75,9 @@ def start_timer(timer_length):
     # Note: length is in seconds!
     global time_left, time_label_var # make sure the global time_left and time_label_var variables are used
     time_left = timer_length # set the time to the given time
-    print(f"Starting {format_time()} Timer...")
+    debug(f"Starting {format_time()} Timer...")
     while True:
-        # print(format_time()) # currently only prints for testing purposes
+        debug(format_time())
         time_label_var.set(format_time()) # update the GUI time label
         time.sleep(LENGTH_OF_SECOND)
         time_left = time_left - 1
@@ -81,6 +87,8 @@ def start_timer(timer_length):
 
 # Creates the gui for the timer
 def create_gui():
+    debug("Creating GUI...")
+
     # Set up the window
     global root_window
     root_window = tkinter.Tk()
@@ -108,9 +116,21 @@ def format_time():
     minutes, seconds = divmod(time_left, 60) # divmod returns the quotient and remainder of the division
     return f"{minutes:02}:{seconds:02}"
 
-def start_game():
-    # This function starts the games, including the Color Memory game and the Tic-Tac-Toe game.
-    pass
+# This function starts the break games
+def start_game(game_number):
+    if game_number == 1: # Color Memory game
+        debug("Starting Color Memory game...")
+        game_thread = threading.Thread(target=setup_color_memory_game, daemon=True)
+        game_thread.start()
+    elif game_number == 2: # Tic-Tac-Toe game
+        debug("Starting Tic-Tac-Toe game...")
+        game_thread = threading.Thread(target=game_window, daemon=True)
+        game_thread.start()
+
+# Prints debug messages, but only if DEBUG is True
+def debug(message):
+    if DEBUG:
+        print(message)
 
 if __name__ == "__main__":
     main()
