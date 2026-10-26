@@ -200,5 +200,4 @@ def loading_animation():
     guide.set("GO!")
     time.sleep(1)
 
-
-setup_color_memory_game()
+# setup_color_memory_game()

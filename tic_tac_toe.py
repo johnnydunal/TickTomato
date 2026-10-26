@@ -282,4 +282,4 @@ def tictactoe_game(root):
     if mode == "single":
         randomizer_bot()
 
-game_window()
+# game_window()
