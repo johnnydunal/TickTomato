@@ -14,6 +14,7 @@ import tkinter
 from tkinter import ttk
 import threading
 from enum import Enum
+from pathlib import Path
 
 # Import the break games
 from color_memory_game import setup_color_memory_game
@@ -25,10 +26,13 @@ WORK_LENGTH = 25 * 60
 BREAK_LENGTH = 5 * 60
 
 LENGTH_OF_SECOND = 1 # should be 1 unless trying to test code by "making time pass faster"
-DEBUG = True # Set to true if debugging, will show debug print statements that explain what's happening
+DEBUG = False # Set to true if debugging, will show debug print statements that explain what's happening
 
 # the global reference for the main GUI window
 root_window = None
+
+BASE_DIR = Path(__file__).resolve().parent # gets the absolute path of the directory containing this script
+LOGO_PATH = BASE_DIR / "assets" / "images" / "logo.png" # path to logo image
 
 # Enum to represent the state of the timer
 class Timer(Enum):
@@ -105,7 +109,11 @@ def create_gui():
     # root_window.geometry("256x128") # Old size for just text by itself
     root_window.geometry("240x160")
     root_window.resizable(False, False)
-    root_window.configure(bg='red')
+    root_window.configure(bg="#B22222")
+
+    # Setting up logo image
+    logo = tkinter.PhotoImage(file=LOGO_PATH)
+    root_window.iconphoto(True, logo)
 
     # This line keeps the window on top of all other applications
     root_window.attributes('-topmost', True) # NOTE: Put ability to toggle this feature in settings later
@@ -114,7 +122,7 @@ def create_gui():
     global time_left, time_label_var
     time_label_var = tkinter.StringVar() # the time variable used in tkinter labels to let it auto-update
     time_label_var.set(format_time())
-    time_label = tkinter.Label(root_window, textvariable=time_label_var, bg='red', font=("Arial", 48, "bold"))
+    time_label = tkinter.Label(root_window, textvariable=time_label_var, bg="#B22222", font=("Arial", 48, "bold"))
     time_label.grid(row=0, column=0, columnspan=2, sticky="we", padx=35, pady=10)
 
     # Set up the buttons
