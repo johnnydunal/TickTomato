@@ -16,6 +16,9 @@ import threading
 from enum import Enum
 from pathlib import Path
 
+# Import the sound manager
+from sound_manager import play_sound
+
 # Import the break games
 from color_memory_game import setup_color_memory_game
 from tic_tac_toe import game_window
@@ -52,6 +55,7 @@ game_button = None # Button to start the selected game during break timenevermin
 
 # Starts the program
 def main():
+    play_sound('assets\\sounds\\victory_sJDDywi.mp3') # play a cool sound when the program starts
     debug("Starting main function...")
     create_gui() # start gui
 
