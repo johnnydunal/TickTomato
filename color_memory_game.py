@@ -30,7 +30,7 @@ def setup_color_memory_game():
     root.geometry("334x368")
     root.configure(bg='white')
 
-    pixel_dir = tk.PhotoImage(width=1, height=1) # forces width and height to be set in pixels for the buttons later
+    pixel_dir = tk.PhotoImage(master=root, width=1, height=1) # forces width and height to be set in pixels for the buttons later
 
     # configure the guide label
     global guide
