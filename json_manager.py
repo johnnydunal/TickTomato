@@ -19,3 +19,16 @@ def write_tasks(tasks):
     data = {"tasks": tasks}
     with open(FILENAME, "w") as file:
         json.dump(data, file, indent=4)
+
+def add_tasks(added_tasks):
+    write_tasks(get_tasks() + added_tasks)
+
+def remove_tasks(removed_task):
+    tasks = get_tasks()
+
+    if removed_task in tasks:
+        tasks.remove(removed_task)
+        write_tasks(tasks)
+
+def reset_tasks():
+    write_tasks([])
