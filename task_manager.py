@@ -1,6 +1,12 @@
+# This module creates the task management system and todo list
+
 import tkinter as tk
 import json_manager as jam
 import json
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent # gets the absolute path of the directory containing this script
+LOGO_PATH = BASE_DIR / "assets" / "images" / "logo.png" # path to logo image
 
 def task_manager_program():
     tasks_list = jam.get_tasks()
@@ -9,6 +15,10 @@ def task_manager_program():
     window = tk.Tk()
     window.title("Task Manager")
     window.geometry("500x200")
+
+    # Setting up logo image
+    logo = tk.PhotoImage(file=LOGO_PATH)
+    window.iconphoto(True, logo)
     
 
     def grid_design():

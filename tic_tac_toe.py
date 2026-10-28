@@ -1,6 +1,10 @@
 # This module will house the tic tac toe game for every break.
 import tkinter as tk
 import random
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent # gets the absolute path of the directory containing this script
+LOGO_PATH = BASE_DIR / "assets" / "images" / "logo.png" # path to logo image
 
 '''
 This module will contain the logic for playing a simple tic-tac-toe game.
@@ -162,6 +166,10 @@ def game_window():
     root.title("Game Window")
     root.geometry("239x257")
     root.resizable(False, False)
+
+    # Setting up logo image
+    logo = tk.PhotoImage(file=LOGO_PATH)
+    root.iconphoto(True, logo)
 
     def start_game(selected_mode):
         global mode

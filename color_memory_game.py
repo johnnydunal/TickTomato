@@ -8,9 +8,13 @@ import random
 import time
 import tkinter as tk
 import threading
+from pathlib import Path
 
 # Import the sound manager
 from sound_manager import play_sound
+
+BASE_DIR = Path(__file__).resolve().parent # gets the absolute path of the directory containing this script
+LOGO_PATH = BASE_DIR / "assets" / "images" / "logo.png" # path to logo image
 
 COLORS = ["red", "green", "blue", "yellow"]
 
@@ -32,6 +36,10 @@ def setup_color_memory_game():
     root.resizable(False, False) 
     root.geometry("334x368")
     root.configure(bg='white')
+
+    # Setting up logo image
+    logo = tk.PhotoImage(file=LOGO_PATH)
+    root.iconphoto(True, logo)
 
     pixel_dir = tk.PhotoImage(master=root, width=1, height=1) # forces width and height to be set in pixels for the buttons later
 
