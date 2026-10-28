@@ -17,7 +17,7 @@ def task_manager_program():
     window.geometry("500x200")
 
     # Setting up logo image
-    logo = tk.PhotoImage(file=LOGO_PATH)
+    logo = tk.PhotoImage(file=LOGO_PATH, master=window)
     window.iconphoto(True, logo)
     
 

@@ -38,7 +38,7 @@ def setup_color_memory_game():
     root.configure(bg='white')
 
     # Setting up logo image
-    logo = tk.PhotoImage(file=LOGO_PATH)
+    logo = tk.PhotoImage(file=LOGO_PATH, master=root)
     root.iconphoto(True, logo)
 
     pixel_dir = tk.PhotoImage(master=root, width=1, height=1) # forces width and height to be set in pixels for the buttons later

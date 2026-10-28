@@ -28,7 +28,7 @@ games = ["Tic-Tac-Toe", "Color Memory"] # for the game selection menu
 WORK_LENGTH = 25 * 60
 BREAK_LENGTH = 5 * 60
 
-LENGTH_OF_SECOND = 0.05 # should be 1 unless trying to test code by "making time pass faster"
+LENGTH_OF_SECOND = 1 # should be 1 unless trying to test code by "making time pass faster"
 DEBUG = False # Set to true if debugging, will show debug print statements that explain what's happening
 
 # the global reference for the main GUI window

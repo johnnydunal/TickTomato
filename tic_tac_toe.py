@@ -168,7 +168,7 @@ def game_window():
     root.resizable(False, False)
 
     # Setting up logo image
-    logo = tk.PhotoImage(file=LOGO_PATH)
+    logo = tk.PhotoImage(file=LOGO_PATH, master=root)
     root.iconphoto(True, logo)
 
     def start_game(selected_mode):
