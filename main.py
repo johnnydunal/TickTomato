@@ -28,7 +28,7 @@ games = ["Tic-Tac-Toe", "Color Memory"] # for the game selection menu
 WORK_LENGTH = 25 * 60
 BREAK_LENGTH = 5 * 60
 
-LENGTH_OF_SECOND = 1 # should be 1 unless trying to test code by "making time pass faster"
+LENGTH_OF_SECOND = 0.05 # should be 1 unless trying to test code by "making time pass faster"
 DEBUG = False # Set to true if debugging, will show debug print statements that explain what's happening
 
 # the global reference for the main GUI window
@@ -55,12 +55,11 @@ game_button = None # Button to start the selected game during break timenevermin
 
 # Starts the program
 def main():
-    play_sound('assets\\sounds\\victory_sJDDywi.mp3') # play a cool sound when the program starts
     debug("Starting main function...")
     create_gui() # start gui
 
 def start_timer_logic():
-    # creates a thread for the timer so it can run at the same time as the guiyay
+    # creates a thread for the timer so it can run at the same time as the gui
     work_thread = threading.Thread(target=work_timer, daemon=True)
     
     debug("Starting timer logic...")
@@ -100,6 +99,7 @@ def start_timer(timer_length):
             time_left = time_left - 1
 
         if time_left < 0:
+            play_sound("assets/sounds/orchestra_win_song.mp3")
             break
 
 # Creates the gui for the timer
@@ -150,6 +150,7 @@ def pause():
         pause_button.config(text="Resume")
         debug("Timer paused.")
     else:
+        play_sound("assets/sounds/start.mp3")
         timer = Timer.ON
         pause_button.config(text="Pause")
         debug("Timer resumed.")
