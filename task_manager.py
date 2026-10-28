@@ -9,6 +9,7 @@ def task_manager_program():
     window = tk.Tk()
     window.title("Task Manager")
     window.geometry("500x200")
+    
 
     def grid_design():
         global task_listbox
@@ -101,7 +102,7 @@ def task_manager_program():
     """
 
 
-
+    
     window.mainloop()
 
 task_manager_program()
