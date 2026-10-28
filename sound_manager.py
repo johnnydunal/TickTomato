@@ -1,12 +1,12 @@
 # This module manages the custom sound effects and plays them as well
 
-# IMPORTANT NOTE: Run the terminal command "pip install playsound==1.2.2" to install the playsound library first!
+# IMPORTANT NOTE: Run the terminal command "pip install pygame-ce" to install the pygame library first!
 
-import time
+import pygame
 
-from playsound import playsound # type: ignore
-import threading
+pygame.init()
+pygame.mixer.init() # initiates pygame's sound stuff
 
 def play_sound(file_path):
-    # plays the sound on a new thread so main thread isn't blocked
-    threading.Thread(target=playsound, args=(file_path,)).start()
+    sound = pygame.mixer.Sound(file_path)
+    sound.play()

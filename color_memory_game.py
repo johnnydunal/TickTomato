@@ -9,6 +9,9 @@ import time
 import tkinter as tk
 import threading
 
+# Import the sound manager
+from sound_manager import play_sound
+
 COLORS = ["red", "green", "blue", "yellow"]
 
 sequence = [] # contains numbers 0-3 that each denote a color in the sequence
@@ -66,10 +69,10 @@ def run_game():
     while True:
         # Show sequence:
         guide.set("Remember the sequence!")
-        time.sleep(0.75)
+        time.sleep(1.25)
         add_to_color_sequence()
         show_sequence()
-        time.sleep(1)
+        time.sleep(0.75)
 
         # Take and verify user input:
         global buttons_pressed, finished_round, alive
@@ -109,6 +112,7 @@ def show_sequence():
         time.sleep(0.5) # 0.5 second delay between flashes
 
 def red_pressed():
+    play_sound("assets/sounds/c6.mp3")
     global buttons_pressed, finished_round
     if sequence[buttons_pressed] == 0:
         buttons_pressed = buttons_pressed + 1
@@ -119,6 +123,7 @@ def red_pressed():
         alive = False
 
 def green_pressed():
+    play_sound("assets/sounds/d6.mp3")
     global buttons_pressed, finished_round
     if sequence[buttons_pressed] == 1:
         buttons_pressed = buttons_pressed + 1
@@ -129,6 +134,7 @@ def green_pressed():
         alive = False
 
 def blue_pressed():
+    play_sound("assets/sounds/e6.mp3")
     global buttons_pressed, finished_round
     if sequence[buttons_pressed] == 2:
         buttons_pressed = buttons_pressed + 1
@@ -139,6 +145,7 @@ def blue_pressed():
         alive = False
 
 def yellow_pressed():
+    play_sound("assets/sounds/f6.mp3")
     global buttons_pressed, finished_round
     if sequence[buttons_pressed] == 3:
         buttons_pressed = buttons_pressed + 1
@@ -149,21 +156,25 @@ def yellow_pressed():
         alive = False
 
 def flash_red():
+    play_sound("assets/sounds/c6.mp3")
     red.config(bg="white")
     time.sleep(0.2)
     red.config(bg="red")
 
 def flash_green():
+    play_sound("assets/sounds/d6.mp3")
     green.config(bg="white")
     time.sleep(0.2)
     green.config(bg="green")
 
 def flash_blue():
+    play_sound("assets/sounds/e6.mp3")
     blue.config(bg="white")
     time.sleep(0.2)
     blue.config(bg="blue")
 
 def flash_yellow():
+    play_sound("assets/sounds/f6.mp3")
     yellow.config(bg="white")
     time.sleep(0.2)
     yellow.config(bg="yellow")

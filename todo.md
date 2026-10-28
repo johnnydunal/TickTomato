@@ -5,7 +5,7 @@ Note: When something is finished, put an 'X' inside the box next to it and move 
 ## Visual/GUI
 - [x] Finalize timer window with all proper buttons
 - [ ] Create window for the settings menu
-- [ ] Create logo for TickTomato
+- [x] Create logo for TickTomato
 - [x] Create the Pomodoro Timer User Interface
 - [ ] Create the Task Manager User Interface
 - [x] Create the Tic-Tac-Toe Game's User Interface
@@ -19,8 +19,8 @@ Note: When something is finished, put an 'X' inside the box next to it and move 
 - [x] Create the timer logic for the 25 and 5 minute timers.
 - [ ] Create the logic + json file management for the built-in task manager/todo list.
 - [x] Create the game logic for the tic-tac-toe game
-- [ ] Create the system for managing and playing custom sound effects
-  - [ ] Make way to ensure the volume is on and loud enough to hear timers
+- [x] Create the system for managing and playing custom sound effects
+  - [x] Make way to ensure the volume is on and loud enough to hear timers
 - [ ] Create the "motivational quote" system, using one of the following:
   - [ ] Quote Database
   - [ ] Quote Generator
