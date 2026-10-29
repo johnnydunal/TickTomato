@@ -19,6 +19,9 @@ from pathlib import Path
 # Import the sound manager
 from sound_manager import play_sound
 
+# Import the task manager (todo list) program
+from task_manager import task_manager_program
+
 # Import the break games
 from color_memory_game import setup_color_memory_game
 from tic_tac_toe import game_window
@@ -50,6 +53,7 @@ time_left = WORK_LENGTH # keeps track of time left for the timers
 time_label_var = None # Text for time label
 pause_button = None # Pause button
 reset_button = None # Reset buttons
+task_button = None # Task Manager button
 combo = None # Combobox for selecting a game during break time
 game_button = None # Button to start the selected game during break timenevermind too much work
 
@@ -127,15 +131,17 @@ def create_gui():
     time_label_var = tkinter.StringVar() # the time variable used in tkinter labels to let it auto-update
     time_label_var.set(format_time())
     time_label = tkinter.Label(root_window, textvariable=time_label_var, bg="#B22222", font=("Arial", 48, "bold"))
-    time_label.grid(row=0, column=0, columnspan=2, sticky="we", padx=35, pady=10)
+    time_label.grid(row=0, column=0, columnspan=3, sticky="we", padx=35, pady=10)
 
     # Set up the buttons
-    global pause_button, reset_button
+    global pause_button, reset_button, task_button
     pause_button = tkinter.Button(root_window, text="Start", bg='white', font=("Arial", 12), command=pause)
     reset_button = tkinter.Button(root_window, text="Reset", bg='white', font=("Arial", 12), command=reset)
+    task_button = tkinter.Button(root_window, text="Tasks", bg='white', font=("Arial", 12), command=task_manager_program)
     
-    pause_button.grid(row=1, column=0, padx=10, pady=10)
-    reset_button.grid(row=1, column=1, padx=10, pady=10)
+    pause_button.grid(row=1, column=0, padx=5, pady=10)
+    reset_button.grid(row=1, column=1, padx=5, pady=10)
+    task_button.grid(row=1, column=2, padx=5, pady=10)
 
     start_timer_logic() # start the timer logic in the main thread
 

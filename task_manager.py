@@ -111,8 +111,6 @@ def task_manager_program():
             state = False
     """
 
-
-    
     window.mainloop()
 
-task_manager_program()
+# task_manager_program()
