@@ -32,3 +32,5 @@ def remove_tasks(removed_task):
 
 def reset_tasks():
     write_tasks([])
+
+

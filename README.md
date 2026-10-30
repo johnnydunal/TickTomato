@@ -21,8 +21,8 @@ Upon launching the app, you will be greeted with the timer. The task management 
 ## License
 This project is licensed under an MIT license. Feel free to use it however you want to but make sure to include the license notice!
 
-## Why we made this!
-
+## Why we made this!h
+It can often be difficult for people to focus for a long period of time. TickTomato is made to help people work more productively and also gives them something to enjoy during the break.
 
 ## AI Declaration
 No AI was used for writing the code itself. However, the AI tools Gemini and Copilot were used for learning various python concepts and implementation methods.
