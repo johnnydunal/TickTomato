@@ -4,8 +4,9 @@
 ## Introduction
 ### What it is
 A pomodoro focus timer (25 minutes work, 5 minutes break) that has a daily task list, plays custom sound effects, and rewards users with a mini-game when a session finishes.
-### Who it's for & Why it exists
 
+### Who it's for & Why it exists
+TickTomato is designed for students and anyone who wants help staying focused on their tasks. It can often be difficult for people to focus for a long period of time. TickTomato is made to help people work more productively and also gives them something to enjoy during the break.
 
 ## Installation
 Navigate to the Releases tab and download the correct file for your operating system. Then, just open it an enjoy!
@@ -21,8 +22,8 @@ Upon launching the app, you will be greeted with the timer. The task management 
 ## License
 This project is licensed under an MIT license. Feel free to use it however you want to but make sure to include the license notice!
 
-## Why we made this!h
-It can often be difficult for people to focus for a long period of time. TickTomato is made to help people work more productively and also gives them something to enjoy during the break.
+## Why we made this!
+Tt can be difficult to stay focused for long periods of time. Many productivity tools are effective, but they are often unrewarding. We wanted to create a tool that gives them something to look forward to after each session.
 
 ## AI Declaration
 No AI was used for writing the code itself. However, the AI tools Gemini and Copilot were used for learning various python concepts and implementation methods.
