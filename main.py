@@ -120,7 +120,7 @@ def create_gui():
     root_window.configure(bg="#B22222")
 
     # Setting up logo image
-    logo = tkinter.PhotoImage(file=LOGO_PATH)
+    logo = tkinter.PhotoImage(file=LOGO_PATH, master=root_window)
     root_window.iconphoto(True, logo)
 
     # This line keeps the window on top of all other applications
@@ -181,10 +181,10 @@ def start_break_gui():
     root_window.geometry("240x200")
     combo = ttk.Combobox(root_window, values=games, state="readonly")
     combo.set("Choose a game!")  # Set placeholder text
-    combo.grid(row=2, column=0, padx=10, pady=10)
+    combo.grid(row=2, column=0, columnspan=2, padx=10, pady=10)
 
     game_button = tkinter.Button(root_window, text="Select", bg='white', font=("Arial", 12), command=lambda: start_game(games.index(combo.get())))
-    game_button.grid(row=2, column=1, padx=10, pady=10)
+    game_button.grid(row=2, column=2, padx=10, pady=10)
 
 def end_break_gui():
     # SWITCH BACK TO WORK MENU
