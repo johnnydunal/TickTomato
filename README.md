@@ -1,4 +1,4 @@
-# TickTomato
+# <img src="https://github.com/johnnydunal/TickTomato/blob/main/assets/images/logo.png?raw=true" width="40" valign="middle"> TickTomato
 
 
 ## Introduction
@@ -9,15 +9,9 @@ TickTomato is a pomodoro focus timer (25 minutes work, 5 minutes break) that has
 TickTomato is designed for students and anyone who wants help staying focused on their tasks. It can often be difficult for people to focus for a long period of time. TickTomato is made to help people work more productively and also gives them something to enjoy during the break.
 
 ## Installation
+### Quick Start (For Users)
 
-
-
-
-
-
-## Quick Start (For Users)
-
-You do not need to install Python to run this application.
+You do not need to install Python to run this application. To download the app:
 
 1. Go to the [Releases](https://github.com/johnnydunal/TickTomato/releases) page.
 2. Download the latest `TickTomato.zip` file.
@@ -26,7 +20,7 @@ You do not need to install Python to run this application.
 
 *Note: Do not move the main executable out of its folder, as it relies on the internal files around it to run properly. If you want a desktop shortcut, right-click the executable and select "Create Shortcut" (or "Pin to Taskbar/Start").*
 
-## Development Setup
+### Development Setup
 
 If you want to run the app from source or build it yourself, follow these steps.
 
