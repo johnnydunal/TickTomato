@@ -1,5 +1,5 @@
 # TickTomato
-
+![Alt text](assets/images/logo.png)
 
 ## Introduction
 ### What it is
