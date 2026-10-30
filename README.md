@@ -25,8 +25,7 @@ You do not need to install Python to run this application. To download the app:
 If you want to run the app from source or build it yourself, follow these steps.
 
 ### Prerequisites
-- Python 3.x
-- pip
+- Python, pip
 
 ### Installation
 1. Clone the repository:
