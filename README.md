@@ -57,7 +57,7 @@ Upon launching the app, you will be greeted with the timer. The three buttons co
 This project is licensed under an MIT license. Feel free to use it however you want to but make sure to include the license notice!
 
 ## Why we made this!
-Tt can be difficult to stay focused for long periods of time. Many productivity tools are effective, but they are often unrewarding. We wanted to create a tool that gives them something to look forward to after each session.
+It can be difficult to stay focused for long periods of time. Many productivity tools are effective, but they are often unrewarding. We wanted to create a tool that gives them something to look forward to after each session.
 
 ## AI Declaration
 No AI was used for writing the code itself. However, the AI tools Gemini and Copilot were used for learning various python concepts and implementation methods.
