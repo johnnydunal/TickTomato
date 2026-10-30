@@ -10,6 +10,11 @@ A pomodoro focus timer (25 minutes work, 5 minutes break) that has a daily task 
 ## Installation
 Navigate to the Releases tab and download the correct file for your operating system. Then, just open it an enjoy!
 
+## .exe packaging
+The following command is the one that packages the code into an exe!
+`pyinstaller --clean --onedir --noconsole --contents-directory "." --add-data "assets/images;assets/images" --add-data "assets/sounds;assets/sounds" --icon=assets\images\new_logo.ico --name="TickTomato" main.py`
+Took me a while to figure out but it works :)
+
 ## Usage and Examples
 Upon launching the app, you will be greeted with the timer. The task management system can be accessed through its button, and the games are available on the break timer screen.
 
